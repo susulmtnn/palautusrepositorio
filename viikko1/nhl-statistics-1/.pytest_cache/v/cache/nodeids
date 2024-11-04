@@ -1,5 +1,7 @@
 [
   "src/tests/statisticsService_test.py::TestStatisticsService::test_if_name_in_player_name_return_name",
   "src/tests/statisticsService_test.py::TestStatisticsService::test_if_name_not_in_player_return_none",
-  "src/tests/statisticsService_test.py::TestStatisticsService::test_konstruktori_saa_olion"
+  "src/tests/statisticsService_test.py::TestStatisticsService::test_konstruktori_saa_olion",
+  "src/tests/statisticsService_test.py::TestStatisticsService::test_team",
+  "src/tests/statisticsService_test.py::TestStatisticsService::test_top"
 ]

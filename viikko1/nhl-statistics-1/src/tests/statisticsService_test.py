@@ -24,7 +24,6 @@ class TestStatisticsService(unittest.TestCase):
             Player("Yzerman", "DET", 42, 56),
             Player("Gretzky", "EDM", 35, 89)
         ]
-        # Here we check if the _players attribute was set correctly
         for i in range(len(expected_players)-1):
             self.assertEqual(self.stats._players[i].name, expected_players[i].name)
 
@@ -35,4 +34,16 @@ class TestStatisticsService(unittest.TestCase):
     def test_if_name_not_in_player_return_none(self):
         self.assertEqual(self.stats.search("Nikke"), None)
 
+    def test_team(self):
+        expected_players = [
+            Player("Semenko", "EDM", 4, 12),
+            Player("Lemieux", "PIT", 45, 54),
+            Player("Kurri", "EDM", 37, 53),
+            Player("Yzerman", "DET", 42, 56),
+            Player("Gretzky", "EDM", 35, 89)
+        ]
 
+        self.assertAlmostEqual(len(self.stats.team("PIT")), 1)
+
+    def test_top(self):
+        self.assertEqual(len(self.stats.top(2)), 2)
