@@ -2,6 +2,11 @@
   "src/tests/statisticsService_test.py::TestStatisticsService::test_if_name_in_player_name_return_name",
   "src/tests/statisticsService_test.py::TestStatisticsService::test_if_name_not_in_player_return_none",
   "src/tests/statisticsService_test.py::TestStatisticsService::test_konstruktori_saa_olion",
+  "src/tests/statisticsService_test.py::TestStatisticsService::test_pass_incorrect_to_top",
+  "src/tests/statisticsService_test.py::TestStatisticsService::test_sortby_goals",
   "src/tests/statisticsService_test.py::TestStatisticsService::test_team",
-  "src/tests/statisticsService_test.py::TestStatisticsService::test_top"
+  "src/tests/statisticsService_test.py::TestStatisticsService::test_top",
+  "src/tests/statisticsService_test.py::TestStatisticsService::test_top_assists",
+  "src/tests/statisticsService_test.py::TestStatisticsService::test_top_goals",
+  "src/tests/statisticsService_test.py::TestStatisticsService::test_top_points"
 ]

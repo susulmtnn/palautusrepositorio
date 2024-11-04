@@ -36,6 +36,8 @@ class StatisticsService:
                 return player.goals
             elif sort_by == SortBy.ASSISTS:
                 return player.assists
+            else:
+                return -1
    
 
         sorted_players = sorted(self._players, key=sort_by_enum, reverse=True)
