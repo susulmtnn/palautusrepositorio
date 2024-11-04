@@ -1,0 +1,31 @@
+import unittest
+from statistics_service import StatisticsService
+from player import Player
+
+class PlayerReaderStub:
+    def get_players(self):
+        return [
+            Player("Semenko", "EDM", 4, 12),
+            Player("Lemieux", "PIT", 45, 54),
+            Player("Kurri", "EDM", 37, 53),
+            Player("Yzerman", "DET", 42, 56),
+            Player("Gretzky", "EDM", 35, 89)
+        ]
+
+class TestStatisticsService(unittest.TestCase):
+    def setUp(self):
+        self.stats=StatisticsService(PlayerReaderStub())
+
+    def test_konstruktori_saa_olion(self):
+        expected_players = [
+            Player("Semenko", "EDM", 4, 12),
+            Player("Lemieux", "PIT", 45, 54),
+            Player("Kurri", "EDM", 37, 53),
+            Player("Yzerman", "DET", 42, 56),
+            Player("Gretzky", "EDM", 35, 89)
+        ]
+        # Here we check if the _players attribute was set correctly
+        for i in range(len(expected_players)-1):
+            self.assertEqual(self.stats._players[i].name, expected_players[i].name)
+
+
