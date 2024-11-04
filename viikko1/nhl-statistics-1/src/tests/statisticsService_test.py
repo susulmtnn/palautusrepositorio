@@ -28,4 +28,11 @@ class TestStatisticsService(unittest.TestCase):
         for i in range(len(expected_players)-1):
             self.assertEqual(self.stats._players[i].name, expected_players[i].name)
 
+    def test_if_name_in_player_name_return_name(self):
+
+        self.assertEqual(self.stats.search("Kurri"), self.stats._players[2])
+
+    def test_if_name_not_in_player_return_none(self):
+        self.assertEqual(self.stats.search("Nikke"), None)
+
 
