@@ -1,5 +1,4 @@
 # tehdään alussa importit
-
 from logger import logger
 from summa import summa
 from erotus import erotus
@@ -15,4 +14,5 @@ print(f"{x} * {y} = {tulo(x, y)}")
 
 
 logger("lopetetaan ohjelma")
-print("goodbye!") 
+print("goodbye!")
+print("new change")
