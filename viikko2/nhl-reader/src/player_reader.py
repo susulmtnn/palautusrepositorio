@@ -8,6 +8,7 @@ class PlayerReader:
         
     def get_players(self):
         response=requests.get(self.url).json()
+        print(response)
 
         players_dicti = []
 
