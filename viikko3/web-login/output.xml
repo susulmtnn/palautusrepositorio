@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1.1 (Python 3.10.12 on linux)" generated="2024-11-18T00:13:48.252830" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="/home/suvi/tkt/palautusrepositorio/palautusrepositorio/viikko3/web-login/src/tests">
+<suite id="s1-s1" name="Home" source="/home/suvi/tkt/palautusrepositorio/palautusrepositorio/viikko3/web-login/src/tests/home.robot">
+<kw name="Open And Configure Browser" owner="resource" type="SETUP">
+<if>
+<branch type="IF" condition="$BROWSER == 'chrome'">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-18T00:13:48.390767" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x7f69af813010&gt;</msg>
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-18T00:13:48.390391" elapsed="0.000415"/>
+</kw>
+<status status="PASS" start="2024-11-18T00:13:48.387279" elapsed="0.003603"/>
+</branch>
+<branch type="ELSE IF" condition="$BROWSER == 'firefox'">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].FirefoxOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2024-11-18T00:13:48.391036" elapsed="0.000026"/>
+</kw>
+<status status="NOT RUN" start="2024-11-18T00:13:48.390923" elapsed="0.000251"/>
+</branch>
+<status status="PASS" start="2024-11-18T00:13:48.387255" elapsed="0.003959"/>
+</if>
+<if>
+<branch type="IF" condition="$HEADLESS == 'true'">
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>0</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="NOT RUN" start="2024-11-18T00:13:48.391480" elapsed="0.000028"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--headless</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="NOT RUN" start="2024-11-18T00:13:48.391594" elapsed="0.000023"/>
+</kw>
+<status status="NOT RUN" start="2024-11-18T00:13:48.391274" elapsed="0.000381"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>${DELAY}</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" start="2024-11-18T00:13:48.391762" elapsed="0.000276"/>
+</kw>
+<status status="PASS" start="2024-11-18T00:13:48.391683" elapsed="0.000407"/>
+</branch>
+<status status="PASS" start="2024-11-18T00:13:48.391260" elapsed="0.000858"/>
+</if>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-11-18T00:13:48.392734" level="INFO">Opening browser 'chrome' to base url 'None'.</msg>
+<arg>browser=${BROWSER}</arg>
+<arg>options=${options}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-11-18T00:13:48.392213" elapsed="1.143325"/>
+</kw>
+<status status="PASS" start="2024-11-18T00:13:48.386989" elapsed="1.148845"/>
+</kw>
+<test id="s1-s1-t1" name="Click Login Link" line="8">
+<kw name="Reset Application And Go To Starting Page" type="SETUP">
+<kw name="Reset Application">
+<msg time="2024-11-18T00:13:49.542239" level="FAIL">No keyword with name 'Reset Application' found.</msg>
+<status status="FAIL" start="2024-11-18T00:13:49.541436" elapsed="0.000893">No keyword with name 'Reset Application' found.</status>
+</kw>
+<kw name="Go To Starting Page">
+<status status="NOT RUN" start="2024-11-18T00:13:49.543746" elapsed="0.000117"/>
+</kw>
+<status status="FAIL" start="2024-11-18T00:13:49.539351" elapsed="0.004765">No keyword with name 'Reset Application' found.</status>
+</kw>
+<status status="FAIL" start="2024-11-18T00:13:49.536033" elapsed="0.008633">Setup failed:
+No keyword with name 'Reset Application' found.</status>
+</test>
+<test id="s1-s1-t2" name="Click Register Link" line="12">
+<kw name="Reset Application And Go To Starting Page" type="SETUP">
+<kw name="Reset Application">
+<msg time="2024-11-18T00:13:49.612406" level="FAIL">No keyword with name 'Reset Application' found.</msg>
+<status status="FAIL" start="2024-11-18T00:13:49.612257" elapsed="0.000216">No keyword with name 'Reset Application' found.</status>
+</kw>
+<kw name="Go To Starting Page">
+<status status="NOT RUN" start="2024-11-18T00:13:49.612689" elapsed="0.000028"/>
+</kw>
+<status status="FAIL" start="2024-11-18T00:13:49.547182" elapsed="0.065632">No keyword with name 'Reset Application' found.</status>
+</kw>
+<status status="FAIL" start="2024-11-18T00:13:49.545717" elapsed="0.067561">Setup failed:
+No keyword with name 'Reset Application' found.</status>
+</test>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-11-18T00:13:49.614522" elapsed="0.616374"/>
+</kw>
+<status status="FAIL" start="2024-11-18T00:13:48.271641" elapsed="1.959409"/>
+</suite>
+<suite id="s1-s2" name="Login" source="/home/suvi/tkt/palautusrepositorio/palautusrepositorio/viikko3/web-login/src/tests/login.robot">
+<kw name="Open And Configure Browser" owner="resource" type="SETUP">
+<if>
+<branch type="IF" condition="$BROWSER == 'chrome'">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-11-18T00:13:50.238126" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x7f69af68ec20&gt;</msg>
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-11-18T00:13:50.237829" elapsed="0.000329"/>
+</kw>
+<status status="PASS" start="2024-11-18T00:13:50.237531" elapsed="0.000691"/>
+</branch>
+<branch type="ELSE IF" condition="$BROWSER == 'firefox'">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].FirefoxOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2024-11-18T00:13:50.238429" elapsed="0.000027"/>
+</kw>
+<status status="NOT RUN" start="2024-11-18T00:13:50.238258" elapsed="0.000241"/>
+</branch>
+<status status="PASS" start="2024-11-18T00:13:50.237505" elapsed="0.001023"/>
+</if>
+<if>
+<branch type="IF" condition="$HEADLESS == 'true'">
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>0</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="NOT RUN" start="2024-11-18T00:13:50.238762" elapsed="0.000027"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--headless</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="NOT RUN" start="2024-11-18T00:13:50.239025" elapsed="0.000040"/>
+</kw>
+<status status="NOT RUN" start="2024-11-18T00:13:50.238575" elapsed="0.000536"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>${DELAY}</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" start="2024-11-18T00:13:50.239228" elapsed="0.000301"/>
+</kw>
+<status status="PASS" start="2024-11-18T00:13:50.239143" elapsed="0.000432"/>
+</branch>
+<status status="PASS" start="2024-11-18T00:13:50.238563" elapsed="0.001040"/>
+</if>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-11-18T00:13:50.240356" level="INFO">Opening browser 'chrome' to base url 'None'.</msg>
+<arg>browser=${BROWSER}</arg>
+<arg>options=${options}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-11-18T00:13:50.239716" elapsed="1.122920"/>
+</kw>
+<status status="PASS" start="2024-11-18T00:13:50.237228" elapsed="1.125574"/>
+</kw>
+<test id="s1-s2-t1" name="Login With Correct Credentials" line="8">
+<kw name="Reset Application Create User And Go To Login Page" type="SETUP">
+<kw name="Reset Application">
+<msg time="2024-11-18T00:13:51.366094" level="FAIL">No keyword with name 'Reset Application' found.</msg>
+<status status="FAIL" start="2024-11-18T00:13:51.366008" elapsed="0.000144">No keyword with name 'Reset Application' found.</status>
+</kw>
+<kw name="Create User">
+<arg>kalle</arg>
+<arg>kalle123</arg>
+<status status="NOT RUN" start="2024-11-18T00:13:51.367623" elapsed="0.000148"/>
+</kw>
+<kw name="Go To Login Page" owner="resource">
+<status status="NOT RUN" start="2024-11-18T00:13:51.368104" elapsed="0.000042"/>
+</kw>
+<status status="FAIL" start="2024-11-18T00:13:51.363754" elapsed="0.004569">No keyword with name 'Reset Application' found.</status>
+</kw>
+<status status="FAIL" start="2024-11-18T00:13:51.362955" elapsed="0.006167">Setup failed:
+No keyword with name 'Reset Application' found.</status>
+</test>
+<test id="s1-s2-t2" name="Login With Incorrect Password" line="14">
+<kw name="Reset Application Create User And Go To Login Page" type="SETUP">
+<kw name="Reset Application">
+<msg time="2024-11-18T00:13:51.383629" level="FAIL">No keyword with name 'Reset Application' found.</msg>
+<status status="FAIL" start="2024-11-18T00:13:51.383502" elapsed="0.000190">No keyword with name 'Reset Application' found.</status>
+</kw>
+<kw name="Create User">
+<arg>kalle</arg>
+<arg>kalle123</arg>
+<status status="NOT RUN" start="2024-11-18T00:13:51.383872" elapsed="0.000026"/>
+</kw>
+<kw name="Go To Login Page" owner="resource">
+<status status="NOT RUN" start="2024-11-18T00:13:51.384125" elapsed="0.000039"/>
+</kw>
+<status status="FAIL" start="2024-11-18T00:13:51.380768" elapsed="0.003519">No keyword with name 'Reset Application' found.</status>
+</kw>
+<status status="FAIL" start="2024-11-18T00:13:51.379876" elapsed="0.005099">Setup failed:
+No keyword with name 'Reset Application' found.</status>
+</test>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-11-18T00:13:51.386825" elapsed="0.612444"/>
+</kw>
+<status status="FAIL" start="2024-11-18T00:13:50.232555" elapsed="1.766868"/>
+</suite>
+<status status="FAIL" start="2024-11-18T00:13:48.253849" elapsed="3.746893"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="4" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="4" skip="0" id="s1" name="Tests">Tests</stat>
+<stat pass="0" fail="2" skip="0" id="s1-s1" name="Home">Tests.Home</stat>
+<stat pass="0" fail="2" skip="0" id="s1-s2" name="Login">Tests.Login</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2024-11-18T00:13:48.385259" level="ERROR">Error in file '/home/suvi/tkt/palautusrepositorio/palautusrepositorio/viikko3/web-login/src/tests/resource.robot' on line 3: Importing library '/home/suvi/tkt/palautusrepositorio/palautusrepositorio/viikko3/web-login/src/AppLibrary.py' failed: ModuleNotFoundError: No module named 'requests'
+Traceback (most recent call last):
+  File "/home/suvi/tkt/palautusrepositorio/palautusrepositorio/viikko3/web-login/src/AppLibrary.py", line 1, in &lt;module&gt;
+    import requests
+PYTHONPATH:
+  /home/suvi/tkt/palautusrepositorio/palautusrepositorio/viikko3/web-login/src
+  /home/suvi/tkt/webcounter/webcounter/.venv/bin
+  /usr/lib/python310.zip
+  /usr/lib/python3.10
+  /usr/lib/python3.10/lib-dynload
+  /home/suvi/tkt/webcounter/webcounter/.venv/lib/python3.10/site-packages</msg>
+<msg time="2024-11-18T00:13:50.235684" level="ERROR">Error in file '/home/suvi/tkt/palautusrepositorio/palautusrepositorio/viikko3/web-login/src/tests/resource.robot' on line 3: Importing library '/home/suvi/tkt/palautusrepositorio/palautusrepositorio/viikko3/web-login/src/AppLibrary.py' failed: ModuleNotFoundError: No module named 'requests'
+Traceback (most recent call last):
+  File "/home/suvi/tkt/palautusrepositorio/palautusrepositorio/viikko3/web-login/src/AppLibrary.py", line 1, in &lt;module&gt;
+    import requests
+PYTHONPATH:
+  /home/suvi/tkt/palautusrepositorio/palautusrepositorio/viikko3/web-login/src
+  /home/suvi/tkt/webcounter/webcounter/.venv/bin
+  /usr/lib/python310.zip
+  /usr/lib/python3.10
+  /usr/lib/python3.10/lib-dynload
+  /home/suvi/tkt/webcounter/webcounter/.venv/lib/python3.10/site-packages</msg>
+</errors>
+</robot>
