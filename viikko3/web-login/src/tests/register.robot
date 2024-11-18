@@ -50,6 +50,34 @@ Register With Username That Is Already In Use
     Submit Credentials
     Register Should Fail With Message  User already exists
 
+Login After Successful Registration
+    Set Username  Suvi
+    Set Password  suvion123
+    Set Reconfirm Password  suvion123
+    Submit Credentials
+    Register Should Succeed
+    Click Link  Continue to main page 
+    Main Page Should Be Open
+    Click Button  Logout
+    Login Page Should Be Open
+    Set Username  Suvi
+    Set Password  suvion123
+    Click Button  Login
+    Login Should Succeed
+
+Login After Failed Registration
+    Set Username  marsu
+    Set Password  marsu
+    Set Reconfirm Password  marsu
+    Submit Credentials
+    Register Should Fail With Message  Minimum password length is 8
+    Click Link  Login 
+    Login Page Should Be Open
+    Set Username  marsu
+    Set Password  marsu
+    Click Button  Login
+    Login Should Fail With Message  Invalid username or password
+
 *** Keywords ***
 Register Should Succeed
     Welcome Page Should Be Open
@@ -57,6 +85,11 @@ Register Should Succeed
 Register Should Fail With Message
     [Arguments]  ${message}
     Register Page Should Be Open
+    Page Should Contain  ${message}
+
+Login Should Fail With Message
+    [Arguments]  ${message}
+    Login Page Should Be Open
     Page Should Contain  ${message}
 
 Submit Credentials
@@ -73,6 +106,9 @@ Set Password
 Set Reconfirm Password
     [Arguments]  ${password_confirmation}
     Input Password  password_confirmation  ${password_confirmation}
+    
+Login Should Succeed
+    Main Page Should Be Open
 
 *** Keywords ***
 Reset Application Create User And Go To Register Page
