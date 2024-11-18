@@ -21,14 +21,27 @@ Register With Too Short Username And Valid Password
     Register Should Fail With Message  The minimum length for a username is 3
 
 Register With Valid Username And Too Short Password
-# ...
+    Set Username  seija
+    Set Password  123456
+    Set Reconfirm Password  123456
+    Submit Credentials
+    Register Should Fail With Message  Minimum password length is 8
+
 
 Register With Valid Username And Invalid Password
-# salasana ei sisällä halutunlaisia merkkejä
-# ...
+    Set Username  suvisuvi
+    Set Password  suvionsuvi
+    Set Reconfirm Password  suvionsuvi
+    Submit Credentials
+    Register Should Fail With Message  Password cannot only contain characters
 
 Register With Nonmatching Password And Password Confirmation
-# ...
+    Set Username  marsumarsu
+    Set Password  marsumarsu22
+    Set Reconfirm Password  suvionsuvi12
+    Submit Credentials
+    Register Should Fail With Message  Passwords do not match
+
 
 Register With Username That Is Already In Use
     Set Username  suvi

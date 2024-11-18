@@ -44,10 +44,14 @@ class UserService:
         if len(username)>=3:
             if (self._user_repository.find_by_username(username)):
                 raise AuthenticationError("User already exists")
-        if len(password)<=8:
+        if len(password)<8:
             raise UserInputError("Minimum password length is 8")
+        if password.isalpha():
+            raise UserInputError("Password cannot only contain characters")
+        if password != password_confirmation:
+            raise UserInputError("Passwords do not match")
 
-        # toteuta loput tarkastukset tänne ja nosta virhe virhetilanteissa
 
+        
 
 user_service = UserService()
