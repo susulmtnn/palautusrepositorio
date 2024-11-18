@@ -31,7 +31,11 @@ Register With Nonmatching Password And Password Confirmation
 # ...
 
 Register With Username That Is Already In Use
-#
+    Set Username  suvi
+    Set Password  suvion1234
+    Set Reconfirm Password  suvion1234
+    Submit Credentials
+    Register Should Fail With Message  User already exists
 
 *** Keywords ***
 Register Should Succeed
@@ -60,4 +64,5 @@ Set Reconfirm Password
 *** Keywords ***
 Reset Application Create User And Go To Register Page
     Reset Application
+    Create User  suvi  kalle123
     Go To Register Page

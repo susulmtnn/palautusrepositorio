@@ -41,7 +41,11 @@ class UserService:
             raise UserInputError("Username and password are required")
         if len(username)<3:
             raise UserInputError("The minimum length for a username is 3")
-
+        if len(username)>=3:
+            if (self._user_repository.find_by_username(username)):
+                raise AuthenticationError("User already exists")
+        if len(password)<=8:
+            raise UserInputError("Minimum password length is 8")
 
         # toteuta loput tarkastukset tänne ja nosta virhe virhetilanteissa
 
