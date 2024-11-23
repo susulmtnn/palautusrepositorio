@@ -20,6 +20,12 @@ class TestKassapaate(unittest.TestCase):
         maksukortti_mock = Mock()
         maksukortti_mock.saldo.return_value = 4
         
-        self.kassa.osta_lounas(maksukortti_mock)
+        if maksukortti_mock.saldo()>=HINTA:
+            self.kassa.osta_lounas(maksukortti_mock)
 
         maksukortti_mock.osta.assert_not_called()
+
+    def test_lataa_lisää_kortille_rahaa(self):
+        maksukortti_mock= Mock()
+
+        self.kassa.lataa(maksukortti_mock)
