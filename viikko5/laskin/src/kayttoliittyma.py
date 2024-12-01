@@ -83,21 +83,22 @@ class Laskutoimitus:
         self.sovelluslogiikka=sovelluslogiikka
         self._luku=_lue_syote
 
+     def suorita(self):
+        syote = self._luku()
+        return self._suorita_lasku(syote)
 
 class Summa(Laskutoimitus):
     def __init__(self, sovelluslogiikka, _lue_syote):
         super().__init__(sovelluslogiikka, _lue_syote)
  
-    def suorita(self): 
-        syote = self._luku()
+    def _suorita_lasku(self, syote): 
         self.sovelluslogiikka.plus(int(syote))
 
 class Erotus(Laskutoimitus):
     def __init__(self, sovelluslogiikka, _lue_syote):
         super().__init__(sovelluslogiikka, _lue_syote)
  
-    def suorita(self): 
-        syote = self._luku()
+    def _suorita_lasku(self, syote):
         self.sovelluslogiikka.miinus(int(syote))
 
 class Nollaus(Laskutoimitus):
