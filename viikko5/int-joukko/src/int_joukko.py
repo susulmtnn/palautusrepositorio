@@ -8,23 +8,26 @@ class IntJoukko:
         return [0] * koko
     
     def __init__(self, kapasiteetti=None, kasvatuskoko=None):
+            self.kapasiteetti=self.aseta_kapasiteetti(kapasiteetti)
+            self.kasvatuskoko= self.aseta_kasvatuskoko(kasvatuskoko, kapasiteetti)
+            self.ljono = self._luo_lista(self.kapasiteetti)
+            self.alkioiden_lkm = 0
+
+    def aseta_kasvatuskoko(self, kasvatuskoko, kapasiteetti):
+         if kasvatuskoko is None:
+            return OLETUSKASVATUS
+         elif not isinstance(kapasiteetti, int) or kapasiteetti < 0:
+            raise Exception("Kasvatuskokovirhe: Annettu kapasiteetti joko ei ole luku, tai on negatiivinen")  # heitin vaan jotain :D
+         else:
+            return kasvatuskoko
+
+    def aseta_kapasiteetti(self, kapasiteetti):
         if kapasiteetti is None:
-            self.kapasiteetti = KAPASITEETTI
+            return KAPASITEETTI
         elif not isinstance(kapasiteetti, int) or kapasiteetti < 0:
             raise Exception("Kapasiteettivirhe: Annettu kapasiteetti joko ei ole luku, tai on negatiivinen")  # heitin vaan jotain :D
         else:
-            self.kapasiteetti = kapasiteetti
-
-        if kasvatuskoko is None:
-            self.kasvatuskoko = OLETUSKASVATUS
-        elif not isinstance(kapasiteetti, int) or kapasiteetti < 0:
-            raise Exception("Kasvatuskokovirhe: Annettu kapasiteetti joko ei ole luku, tai on negatiivinen")  # heitin vaan jotain :D
-        else:
-            self.kasvatuskoko = kasvatuskoko
-
-        self.ljono = self._luo_lista(self.kapasiteetti)
-
-        self.alkioiden_lkm = 0
+            return kapasiteetti
 
     def kuuluu(self, luku):
         #olisin halunnut muuttaa metodin nimeä, mutta en ollut varma saanko koskea testeihin.
@@ -39,9 +42,9 @@ class IntJoukko:
             return True
     
     def luo_uusi_sailytyspaikka(self):
-            taulukko_old = self.ljono
+            vanha_ljono = self.ljono
             self.ljono = self._luo_lista(self.alkioiden_lkm + self.kasvatuskoko)
-            self.kopioi_lista(taulukko_old, self.ljono)
+            self.kopioi_lista(vanha_ljono, self.ljono)
             return True
 
     def lisaa(self, n):
@@ -83,20 +86,16 @@ class IntJoukko:
     def yhdiste(a, b):
         joukko = IntJoukko()
         a_lista, b_lista = joukko.luo_instanssi(a, b)
-
         for i in range(0, len(a_lista)):
             joukko.lisaa(a_lista[i])
-
         for i in range(0, len(b_lista)):
             joukko.lisaa(b_lista[i])
-
         return joukko
 
     @staticmethod
     def leikkaus(a, b):
         joukko = IntJoukko()
         a_lista, b_lista = joukko.luo_instanssi(a, b)
-
         for i in range(0, len(a_lista)):
             for j in range(0, len(b_lista)):
                 if a_lista[i] == b_lista[j]:
