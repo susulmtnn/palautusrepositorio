@@ -2,6 +2,8 @@ from enum import Enum
 from tkinter import ttk, constants, StringVar
 
 
+EDELLINEN_LUKU=0
+
 class Komento(Enum):
     SUMMA = 1
     EROTUS = 2
@@ -18,7 +20,7 @@ class Kayttoliittyma:
             Komento.SUMMA: Summa(sovelluslogiikka, self._lue_syote),
             Komento.EROTUS: Erotus(sovelluslogiikka, self._lue_syote),
             Komento.NOLLAUS: Nollaus(sovelluslogiikka, self._lue_syote),
-            #Komento.KUMOA: Kumoa(sovelluslogiikka, self._lue_syote) # ei ehkä tarvita täällä...
+            Komento.KUMOA: Kumoa(sovelluslogiikka, self._lue_syote) # ei ehkä tarvita täällä...
         }
 
     def _lue_syote(self):
@@ -68,12 +70,13 @@ class Kayttoliittyma:
     def _suorita_komento(self, komento):
         komento_olio = self._komennot[komento]
         komento_olio.suorita()
-        self._kumoa_painike["state"] = constants.NORMAL
 
         if self._sovelluslogiikka.arvo() == 0:
             self._nollaus_painike["state"] = constants.DISABLED
+            self._kumoa_painike["state"] = constants.DISABLED
         else:
             self._nollaus_painike["state"] = constants.NORMAL
+            self._kumoa_painike["state"] = constants.NORMAL
 
         self._syote_kentta.delete(0, constants.END)
         self._arvo_var.set(self._sovelluslogiikka.arvo())
@@ -85,6 +88,8 @@ class Laskutoimitus:
 
      def suorita(self):
         syote = self._luku()
+        global EDELLINEN_LUKU
+        EDELLINEN_LUKU=syote
         return self._suorita_lasku(syote)
 
 class Summa(Laskutoimitus):
@@ -108,6 +113,9 @@ class Nollaus(Laskutoimitus):
     def suorita(self): 
         self.sovelluslogiikka.nollaa()
 
-
-
-
+class Kumoa(Laskutoimitus):
+    def __init__(self, sovelluslogiikka, _lue_syote):
+        super().__init__(sovelluslogiikka, _lue_syote)
+ 
+    def suorita(self): 
+        self.sovelluslogiikka.kumoa(EDELLINEN_LUKU)

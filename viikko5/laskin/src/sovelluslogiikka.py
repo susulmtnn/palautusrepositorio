@@ -11,6 +11,9 @@ class Sovelluslogiikka:
     def nollaa(self):
         self._arvo = 0
 
+    def kumoa(self, luku):
+        self._arvo=int(luku)
+
     def aseta_arvo(self, arvo):
         self._arvo = arvo
 
