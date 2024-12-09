@@ -12,6 +12,15 @@ class And:
 class All:
     def test(self, player):
             return player
+    
+class Or:
+    def __init__(self, *options):
+        self._options=options
+
+    def test(self, player):
+        for option in self._options:
+            if (option.test(player)):
+                return player
 
 
 class Not:
