@@ -8,6 +8,27 @@ class And:
                 return False
 
         return True
+    
+class All:
+    pass
+
+class Not:
+    def __init__(self, function):
+        self._function = function
+
+    def test(self, player):
+            return not self._function.test(player)
+
+class HasFewerThan:
+    def __init__(self, value, attr):
+        self._value = value
+        self._attr = attr
+
+    def test(self, player):
+        player_value = getattr(player, self._attr)
+
+        return player_value < self._value
+
 
 
 class PlaysIn:
