@@ -10,7 +10,9 @@ class And:
         return True
     
 class All:
-    pass
+    def test(self, player):
+            return player
+
 
 class Not:
     def __init__(self, function):
@@ -28,7 +30,6 @@ class HasFewerThan:
         player_value = getattr(player, self._attr)
 
         return player_value < self._value
-
 
 
 class PlaysIn:
